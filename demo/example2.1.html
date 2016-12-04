@@ -45,18 +45,25 @@
         var bg = document.getElementById('bg');
         var beforeRootFontSize = window.getComputedStyle(h, null).getPropertyValue('font-size');
 
-        document.documentElement.style.fontSize = ((window.innerWidth/640)*100/16)*100 + '%';
+        var designWidth = 640, rem2px = 100;
+        var h = document.getElementsByTagName('html')[0];
+        var defaultFontSize = parseFloat(window.getComputedStyle(h, null)
+                                    .getPropertyValue('font-size'));
+
+        document.documentElement.style.fontSize =
+        window.innerWidth / designWidth * rem2px / defaultFontSize * 100 + '%';
 
         var afterRootFontSize = window.getComputedStyle(h, null).getPropertyValue('font-size');
 
         var pfontSize = window.getComputedStyle(el, null).getPropertyValue('width');
         var bgwidth = window.getComputedStyle(bg, null).getPropertyValue('width');
 
+
         document.getElementById('font').innerHTML = ''
         + "<br> 设置前html的 fontSize: " + beforeRootFontSize
         + "<br> html fontSize的设置值: " + h.style.fontSize
         + "<br> 设置后html的 fontSize: " + afterRootFontSize
-        + "<br>  1rem 目标值: " + (window.innerWidth/640 * 100)
+        + "<br>  1rem 目标值: " + (window.innerWidth/375 * 100)
         + "<br>  1rem 实际值: " + pfontSize
         + "<br> 6.4rem 目标值: " + window.innerWidth + "（屏宽）"
         + "<br> 6.4rem 实际值: " + bgwidth
