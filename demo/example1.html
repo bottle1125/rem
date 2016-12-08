@@ -22,11 +22,22 @@
     var h = document.getElementsByTagName('html')[0];
     var el = document.getElementById('foo');
     var bg = document.getElementById('bg');
+
+    //设置前浏览器的默认字体大小
     var beforeRootFontSize = window.getComputedStyle(h, null).getPropertyValue('font-size');
+
+    //html fontSize的设置值
     document.documentElement.style.fontSize = window.innerWidth / 640 * 100 + 'px';
+
+    //设置后html的fontSize
     var afterRootFontSize = window.getComputedStyle(h, null).getPropertyValue('font-size');
+
+    //1rem实际值
     var pfontSize = window.getComputedStyle(el, null).getPropertyValue('width');
+
+    //6.4rem实际值
     var bgwidth = window.getComputedStyle(bg, null).getPropertyValue('width');
+
     document.getElementById('font').innerHTML = ''
     + "<br> 设置前html的 fontSize: " + beforeRootFontSize
     + "<br> html fontSize的设置值: " + h.style.fontSize
